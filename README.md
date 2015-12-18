@@ -1,6 +1,5 @@
 #General Purpose Cheat sheet 
 
- [TOC]
 
 ## Terminal Commands
 ### XRandr
