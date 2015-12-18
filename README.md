@@ -1,12 +1,14 @@
 #General Purpose Cheat sheet 
 
+A collection of things I found useful and don't wont want to forget
+
 ## Table of Contents
  - [Terminal Useful Commands](#terminal-commands)
   - [XRandr](#xrandr)
   - [Audio](#audio)
      - [Blueetooth](#bluetooth)
  - [Programming](#programming)
-    - [Python](#python)
+    - [Python](#git-books)
      - [Python Resources](#python-resources)
           - [Python Talks](#python-talks)
        
@@ -22,7 +24,13 @@ To connect to a HDMI screen use `xrandr --output HDMI1 --auto` then replace auto
 
 #### Bluetooth
 
-To connect the JBL bluetooth speaker 
+To connect the JBL bluetooth speaker can use the  GTK+ Bluetooth Manager called [Blueman](https://github.com/blueman-project/blueman). 
+
+After that to make the bluetooth device the output use 
+
+`pacmd set-default-sink bluez_sink.00_1D_DF_F6_A2_66.a2dp` 
+
+where pacmd *bluez_sink.00_1D_DF_F6_A2_66.a2dp* is my bluettoh speaker.
 
 
 ##Programming
