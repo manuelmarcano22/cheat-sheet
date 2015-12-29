@@ -55,7 +55,7 @@ or with the extended Globbing:
 ### Timer
 
 ```bash
-sleep 20m; espeak -v es Yaaaa; notify-send -u critical Yaaaaaaaaa
+$ sleep 20m; espeak -v es Yaaaa; notify-send -u critical Yaaaaaaaaa
 ```
 
 ### Audio
