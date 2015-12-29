@@ -62,7 +62,11 @@ And to know the running time in case you need to cancel it:
 ```bash
 $ ps -eo '%t %c' | grep sleep
 ```
+To monitor it every second:
 
+```bash
+$ watch -n 1 "ps -eo '%t %c' | grep sleep"
+```
 
 
 
