@@ -8,7 +8,7 @@ A collection of things I found useful and don't wont want to forget
   - [Screen shots](#screen-shots)
   - [DNS](#update-dns-server)
   - [grep](#grep)
-  - [Timer](#timer)
+  - [Simple Timer](#timer)
   - [Audio](#audio)
      - [Blueetooth](#bluetooth)
 
@@ -52,12 +52,10 @@ or with the extended Globbing:
 
 `!(pattern)`
 
-
-
 ### Timer
 
 ```bash
-time cat && sleep 20m; espeak -v es Yaaaa; notify-send -u critical Yaaaaaaaaa
+sleep 20m; espeak -v es Yaaaa; notify-send -u critical Yaaaaaaaaa
 ```
 
 ### Audio
