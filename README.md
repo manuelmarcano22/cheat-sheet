@@ -57,6 +57,14 @@ or with the extended Globbing:
 ```bash
 $ sleep 20m; espeak -v es Yaaaa; notify-send -u critical Yaaaaaaaaa
 ```
+And to know the running time in case you need to cancel it:
+
+```bash
+$ ps -eo '%t %c' | grep sleep
+```
+
+
+
 
 ### Audio
 
