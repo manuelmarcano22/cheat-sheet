@@ -81,10 +81,17 @@ sleep $1$2 ; espeak -v es Yaaaaaaaaaaaaaa ; notify-send -u critical Yaaaaaaaaaaa
 
 function seetimer {
 leftt=1
+maxbar=100
 while [ $leftt -ne '0' ]; do
 		leftt=`ps -eo '%t %c' | grep sleep | grep -oh '[0-9][0-9]:[0-9][0-9]' | awk -F: '{print $1*60+$2}'`
-		leftt=`echo $stimes-$leftt | bc -l`
-		echo -ne 'Time left: '`date -u -d @$leftt +%T`[`printf "%0.s-" {1..10}`]'\r'
+		percenttimer=`echo '('$leftt/$stimes'*100)' | bc -l`
+		printf -v percenttimer '%.2f' $percenttimer
+		hashes=`echo $percenttimer | awk '{print int($1)}'`
+		printf -v spaces '%*s' $hashes ''
+		printf -v spacesleft '%*s' $(($maxbar-$hashes)) ''
+		echo $hashes
+		echo -ne 'Percentage: '$percenttimer' % Time left: '`date -u -d @$leftt +%T`' ['`printf '%s' ${spaces// /#}``printf '%s' ${spacesleft// /-}`']\r'
+		#Where maxbar replaces * for the string length in printf. Then substitute the '' for # or -.
 		sleep 1
 done
 }
