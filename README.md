@@ -72,21 +72,26 @@ I put this in a function in my .bashrc
 ```bash
 function simpletimer {
 if [ $2 = 'm' ]; then 
-	export stimes=`echo $1'*60' | bc -l`
+	 stimes=`echo $1'*60' | bc -l`
 else 
-	export stimes=$1
+	stimes=`echo $1`
 fi
-sleep $1$2 ; espeak -v es Yaaaaaaaaaaaaaa ; notify-send -u critical Yaaaaaaaaaaaaaaaaaaaaa
+echo 'export stimes='$stimes > ~/.timervariables
+sleep $1$2 ; espeak -v en "Niggaaa, whaaaat?" ; notify-send -u critical Yaaaaaaaaaaaaaaaaaaaaa
 }
 
+
 function seetimer {
+source ~/.timervariables
 leftt=1
-maxbar=100
 while [ $leftt -ne '0' ]; do
+		printf -v maxbar '%s' $((COLUMNS-50))
 		leftt=`ps -eo '%t %c' | grep sleep | grep -oh '[0-9][0-9]:[0-9][0-9]' | awk -F: '{print $1*60+$2}'`
 		percenttimer=`echo '('$leftt/$stimes'*100)' | bc -l`
+		leftt=$(($stimes-$leftt))
 		printf -v percenttimer '%.2f' $percenttimer
-		hashes=`echo $percenttimer | awk '{print int($1)}'`
+		printf -v hashes '%0.f' `echo '(('$percenttimer'/100))*'$maxbar | bc -l`     
+#		hashes=`echo $percenttimer | awk '{print int($1)}'`
 		printf -v spaces '%*s' $hashes ''
 		printf -v spacesleft '%*s' $(($maxbar-$hashes)) ''
 		echo -ne 'Percentage: '$percenttimer' % Time left: '`date -u -d @$leftt +%T`' ['`printf '%s' ${spaces// /#}``printf '%s' ${spacesleft// /-}`']\r'
@@ -95,7 +100,6 @@ while [ $leftt -ne '0' ]; do
 done
 }
 ```
-
 
 ### Audio
 
