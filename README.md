@@ -67,7 +67,28 @@ To monitor it every second:
 ```bash
 $ watch -n 1 "ps -eo '%t %c' | grep sleep"
 ```
+I put this in a function in my .bashrc
 
+```bash
+function simpletimer {
+if [ $2 = 'm' ]; then 
+	export stimes=`echo $1'*60' | bc -l`
+else 
+	export stimes=$1
+fi
+sleep $1$2 ; espeak -v es Yaaaaaaaaaaaaaa ; notify-send -u critical Yaaaaaaaaaaaaaaaaaaaaa
+}
+
+function seetimer {
+leftt=1
+while [ $leftt -ne '0' ]; do
+		leftt=`ps -eo '%t %c' | grep sleep | grep -oh '[0-9][0-9]:[0-9][0-9]' | awk -F: '{print $1*60+$2}'`
+		leftt=`echo $stimes-$leftt | bc -l`
+		echo -ne 'Time left: '`date -u -d @$leftt +%T`[`printf "%0.s-" {1..10}`]'\r'
+		sleep 1
+done
+}
+```
 
 
 ### Audio
