@@ -89,7 +89,6 @@ while [ $leftt -ne '0' ]; do
 		hashes=`echo $percenttimer | awk '{print int($1)}'`
 		printf -v spaces '%*s' $hashes ''
 		printf -v spacesleft '%*s' $(($maxbar-$hashes)) ''
-		echo $hashes
 		echo -ne 'Percentage: '$percenttimer' % Time left: '`date -u -d @$leftt +%T`' ['`printf '%s' ${spaces// /#}``printf '%s' ${spacesleft// /-}`']\r'
 		#Where maxbar replaces * for the string length in printf. Then substitute the '' for # or -.
 		sleep 1
