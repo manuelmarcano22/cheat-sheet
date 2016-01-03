@@ -8,6 +8,7 @@ A collection of things I found useful and don't wont want to forget
   - [Screen shots](#screen-shots)
   - [DNS](#update-dns-server)
   - [grep](#grep)
+  - [Netcat](#netcat)
   - [Simple Timer](#timer)
   - [Audio](#audio)
      - [Blueetooth](#bluetooth)
@@ -51,6 +52,17 @@ To delete all but one file
 or with the extended Globbing:
 
 `!(pattern)`
+
+
+### Netcat
+
+To start a really simple chat over lan.
+
+`nc -l 8080`
+
+In the other pc:
+
+`nc $((IPComputer1)) 8080`
 
 ### Timer
 
