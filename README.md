@@ -64,6 +64,17 @@ In the other pc:
 
 `nc $((IPComputer1)) 8080`
 
+One can do cool things like stream audio using nc. As listed in (http://aplawrence.com/Girish/nc.html) with mplayer and nc on the client do:
+
+```bash
+$ nc -l -p 1234 | mplayer -cache 8192 -
+```
+On the server with any mplayer playable file:
+
+``bash
+$ cat file.mp3 | nc IPclient 1234
+```
+
 ### Timer
 
 ```bash
