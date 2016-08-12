@@ -3,7 +3,9 @@
 A collection of things I found useful and don't wont want to forget
 
 ## Table of Contents
- - [Terminal Useful Commands](#terminal-commands)
+  - [Terminal Useful Commands](#terminal-commands)
+  - [Bash](#bash)
+  - [PDFtk](#pdftk)
   - [XRandr](#xrandr)
   - [Screen shots](#screen-shots)
   - [DNS](#update-dns-server)
@@ -23,6 +25,61 @@ A collection of things I found useful and don't wont want to forget
        
 
 ## Terminal Commands
+
+### Bash
+
+To get the output of the last command `!!`. If for example want to open the result of a search do:
+
+```bash
+locate foo
+vim `!!`
+```
+
+To see Memory use can use top or
+
+```bash
+free -mh
+```
+
+or `cat /proc/meminfo`
+
+
+#### Here document
+
+Delimiter << 
+
+cat > $filename << EOF
+
+### Change backlight
+
+go to `/sys/class/backlight/intel_backlight`
+
+and modify the files. Can modify the number in brigtness
+
+
+### Memory usage by a process
+
+```bash
+echo "scale=2;"`pmap 5057 | grep total | awk '{print $2}' | rev | cut -c 2- | rev`/1000000 | bc
+while [ "$(pidof <name of process>)" ]; do <something> ; done
+```
+
+where 5057 is the pip of a process
+
+
+
+### PDFtk
+
+Can use ghostscriptwith `-dPDFSETTINGS=/screen` or `ebook`
+
+Answer in [Ubuntu Forum](http://askubuntu.com/questions/113544/how-can-i-reduce-the-file-size-of-a-scanned-pdf-file)
+
+```
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf
+```
+
+
+
 ### XRandr
 
 To connect to a HDMI screen use `xrandr --output HDMI1 --auto` then replace auto with `--left-of eDP1` or other option.
@@ -71,7 +128,7 @@ $ nc -l -p 1234 | mplayer -cache 8192 -
 ```
 On the server with any mplayer playable file:
 
-``bash
+```bash
 $ cat file.mp3 | nc IPclient 1234
 ```
 
@@ -167,3 +224,24 @@ To set a Simple Web Server:
 | Title | Link |
 | ----- | ---- |
 | PyCon 2015 Tutorials | https://www.youtube.com/playlist?list=PLx_MamJPwgQMaaFaLufNeSUJRSaq0COyO |
+
+
+
+
+
+## To-Dos
+- [ ] So that chrome read hosts file do `chrome://net-internals/#sockets` and then flush
+- [ ] Block sites put to localhost in /etc/hosts 
+- [ ] Put control R for terminal
+- [ ] History substitution ^^ !! !cat
+- [ ] fc and open vaina. 
+- [ ] bg for background process
+- [ ] Here Documents in bash <<
+- [ ] Add remove caps lock as esc to use Vim
+- [ ]  Brigtness
+- [ ] Default sheell and change /etc/passwd
+- [ ] Draw to root window a video mpv --wid=0. Youtube: youtube-dl   https://www.youtube.com/watch?v=UJWk_KNbDHo -o - | mpv --wid=0 -
+
+
+
+
