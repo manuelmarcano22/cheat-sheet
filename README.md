@@ -157,7 +157,7 @@ else
 	stimes=`echo $1`
 fi
 echo 'export stimes='$stimes > ~/.timervariables
-sleep $1$2 ; espeak -v en "Niggaaa, whaaaat?" ; notify-send -u critical Yaaaaaaaaaaaaaaaaaaaaa
+sleep $1$2 ; espeak -v en "Time" ; notify-send -u critical Ya
 }
 
 
