@@ -46,8 +46,7 @@ or `cat /proc/meminfo`
 To see a change in file. For example how the size of the disk space changes:
 
 ```bash 
-while true; do df -h > time1.txt ; sleep 5s ; df -h > time2.txt; diff ti
-me1.txt time2.txt ; sleep 1s; done 
+while true; do df -h > time1.txt ; sleep 5s ; df -h > time2.txt; diff time1.txt time2.txt ; sleep 1s; done 
 ```
 
 #### Here document
