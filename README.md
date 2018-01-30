@@ -49,6 +49,11 @@ To see a change in file. For example how the size of the disk space changes:
 while true; do df -h > time1.txt ; sleep 5s ; df -h > time2.txt; diff time1.txt time2.txt ; sleep 1s; done 
 ```
 
+To see the memory used by processes can do:
+
+`ps aux  | awk '{print $6/1024 " MB\t\t" $11}'  | sort -n`:
+
+
 #### Here document
 
 Delimiter << 
