@@ -227,6 +227,19 @@ To set a Simple Web Server:
 
 `python -m SimpleHTTPServer 8888 &`
 
+To 
+```python
+ def f(l):                                                                           
+    ...:     if l == []:                                       
+    ...:         yield []
+    ...:         return
+    ...:     ll = l[1:]
+    ...:     for j in range(len(ll)):
+    ...:         for end in f(ll[:j] + ll[j+1:]):
+    ...:             yield [(l[0], ll[j])] + end
+    ...:
+
+```
 
 #### Python Resources
 
